@@ -27,14 +27,10 @@ let possibleSquares = [
 	"Sudden 1v1"
 ];
 
-let chosenSquares = possibleSquares.sort(() => 0.5 - Math.random()).slice(0, 24);
-
-chosenSquares.splice(12, 0, "**TWO** (Free Space)");
-
 const app = new App({
 	target: document.body,
 	props: {
-		squares: chosenSquares,
+		possibleSquares: possibleSquares,
 	}
 });
 

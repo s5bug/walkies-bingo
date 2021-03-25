@@ -1,7 +1,18 @@
 <script lang="ts">
 	import 'bytemd/dist/index.min.css';
 	import Square from './Square.svelte';
-	export let squares: string[];
+	export let possibleSquares: string[];
+	let squares: string[];
+
+	let screenshotMode: boolean = false;
+
+	function reloadSquares() {
+		let chosenSquares = possibleSquares.sort(() => 0.5 - Math.random()).slice(0, 24);
+		chosenSquares.splice(12, 0, "**TWO** (Free Space)");
+		squares = chosenSquares;
+	}
+
+	reloadSquares();
 </script>
 
 <main>
@@ -9,11 +20,30 @@
 	<div id="bingo-board">
 		{#each [0, 5, 10, 15, 20] as ri }
 			{#each squares.slice(ri, ri + 5) as square, i}
-				<div class="square square-column-{i}"><Square content={square}/></div>
+				<div class="square square-column-{i}"><Square content={square} screenshotMode={screenshotMode}/></div>
 			{/each}
 		{/each}
 	</div>
+	<div id="controls">
+		<button on:click="{reloadSquares}">Re-roll Board</button>
+		<label>
+			<input type=checkbox bind:checked={screenshotMode}> Screenshot Mode
+		</label>
+	</div>
 </main>
+
+<hr>
+
+<footer>
+<dl>
+	<dt>Walkies Bingo Design</dt>
+	<dd><a href="https://twitter.com/IndagoYt/status/1363332508448935937" target="_blank">IndagoYt's friend Evelyn</a></dd>
+	<dt>Web App Creator</dt>
+	<dd><a href="https://twitter.com/s5bug/status/1374989326518390784" target="_blank">s5bug</a></dd>
+	<dt>Link to Source Code</dt>
+	<dd><a href="https://github.com/s5bug/walkies-bingo" target="_blank">https://github.com/s5bug/walkies-bingo</a></dd>
+</dl>
+</footer>
 
 <style>
 	:global(body) {
@@ -69,6 +99,15 @@
 
 	.square-column-4 {
 		background-color: #FF87EF;
+	}
+
+	#controls > * {
+		display: inline-block;
+	}
+
+	footer {
+		color: black;
+		padding: 1em;
 	}
 
 	@media (max-width: 800px) {
