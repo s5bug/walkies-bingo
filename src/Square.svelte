@@ -5,15 +5,24 @@
 
     let selected: boolean = false;
 
+    let twoAudio: HTMLAudioElement = new Audio("/two/two_6.mp3");
+    twoAudio.volume = 0.2;
+
     function toggleSelection() {
         selected = !selected;
         if(selected) {
             let twoFile = "/two/two_" + (Math.floor(Math.random() * 8) + 1) + ".mp3";
-            let twoAudio = new Audio(twoFile);
+            twoAudio.src = twoFile;
             twoAudio.addEventListener("canplay", event => {
-                twoAudio.volume = 0.2;
-                twoAudio.play();
+                // The square could become deselected by this point
+                if(selected) {
+                    twoAudio.play();
+                }
+                twoAudio.removeEventListener("canplay", this);
             });
+        } else {
+            twoAudio.currentTime = 0;
+            twoAudio.pause();
         }
     }
 </script>
