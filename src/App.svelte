@@ -8,7 +8,7 @@
 
 	function reloadSquares() {
 		let chosenSquares = possibleSquares.sort(() => 0.5 - Math.random()).slice(0, 24);
-		chosenSquares.splice(12, 0, "**TWO** (Free Space)");
+		chosenSquares.splice(12, 0, "# TWO\n\n(Free Space)");
 		squares = chosenSquares;
 	}
 
@@ -43,6 +43,9 @@
 	<dt>Link to Source Code</dt>
 	<dd><a href="https://github.com/s5bug/walkies-bingo" target="_blank">https://github.com/s5bug/walkies-bingo</a></dd>
 </dl>
+<p>
+	If you're having issues on mobile, try enabling the "Desktop Site" option in your browser's menu.
+</p>
 </footer>
 
 <style>

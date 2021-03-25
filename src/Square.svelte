@@ -7,6 +7,14 @@
 
     function toggleSelection() {
         selected = !selected;
+        if(selected) {
+            let twoFile = "/two/two_" + (Math.floor(Math.random() * 8) + 1) + ".mp3";
+            let twoAudio = new Audio(twoFile);
+            twoAudio.addEventListener("canplay", event => {
+                twoAudio.volume = 0.2;
+                twoAudio.play();
+            });
+        }
     }
 </script>
 
