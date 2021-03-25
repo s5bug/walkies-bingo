@@ -45,7 +45,7 @@
 	<dt>Web App Creator</dt>
 	<dd><a href="https://twitter.com/s5bug/status/1374989326518390784" target="_blank">s5bug</a></dd>
 	<dt>Link to Source Code</dt>
-	<dd><a href="https://github.com/s5bug/walkies-bingo" target="_blank">https://github.com/s5bug/walkies-bingo</a></dd>
+	<dd><a href="https://github.com/s5bug/walkies-bingo" target="_blank">https://github.com/s5bug/walkies-bingo</a> (report issues and request/add squares here)</dd>
 </dl>
 <p>
 	If you're having issues on mobile, try enabling the "Desktop Site" option in your browser's menu.
