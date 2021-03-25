@@ -19,11 +19,10 @@
 </script>
 
 <div class="square" class:selected={selected && screenshotMode} on:click={toggleSelection}>
-{#if selected && !screenshotMode}
-    <img src="/two.png" width="152" height="152" />
-{:else}
-    <Viewer value={content} />
-{/if}
+    <img src="/two.png" width="152" height="152" class:hidden={!selected || screenshotMode} />
+    <div class:hidden={selected && !screenshotMode}>
+        <Viewer value={content} sanitize={x => x} />
+    </div>
 </div>
 
 <style>
@@ -36,5 +35,9 @@
 
     .selected {
         background-color: #00ff00;
+    }
+
+    .hidden {
+        display: none;
     }
 </style>
