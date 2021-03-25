@@ -18,11 +18,15 @@
 <main>
 	<h1>Walkies Bingo</h1>
 	<div id="bingo-board">
-		{#each [0, 5, 10, 15, 20] as ri }
-			{#each squares.slice(ri, ri + 5) as square, i}
-				<div class="square square-column-{i}"><Square content={square} screenshotMode={screenshotMode}/></div>
+		{#key squares}
+			{#each [0, 5, 10, 15, 20] as ri }
+				{#each squares.slice(ri, ri + 5) as square, i}
+					<div class="square square-column-{i}">
+						<Square content={square} screenshotMode={screenshotMode}/>
+					</div>
+				{/each}
 			{/each}
-		{/each}
+		{/key}
 	</div>
 	<div id="controls">
 		<button on:click="{reloadSquares}">Re-roll Board</button>
