@@ -24,7 +24,10 @@ let possibleSquares = [
 	"\"Yeah, I lose this one for sure\"\n\n(and he does)",
 	"Conveyor Makes VS Level Impossible",
 	"Tries to cheese a level and loses because of that",
-	"Sudden 1v1"
+	"Sudden 1v1",
+	"Wins By Finding Hidden Block",
+	"Plays level in Single Player after match",
+    "Wins by tricking another player into going the wrong way"
 ];
 
 const app = new App({
