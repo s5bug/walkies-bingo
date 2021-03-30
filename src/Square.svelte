@@ -2,20 +2,25 @@
     import { Viewer } from 'bytemd';
     export let content: string;
     export let screenshotMode: boolean;
+    export let volume: number;
 
     let selected: boolean = false;
 
-    let twoAudio: HTMLAudioElement = new Audio("/two/two_6.mp3");
-    twoAudio.volume = 0.2;
+    let twoAudio: HTMLAudioElement = null;
 
     function toggleSelection() {
         selected = !selected;
         if(selected) {
             let twoFile = "/two/two_" + (Math.floor(Math.random() * 8) + 1) + ".mp3";
-            twoAudio.src = twoFile;
+            if(twoAudio === null) {
+                twoAudio = new Audio(twoFile);
+            } else {
+                twoAudio.src = twoFile;
+            }
             twoAudio.addEventListener("canplay", event => {
                 // The square could become deselected by this point
                 if(selected) {
+                    twoAudio.volume = volume / 100.0;
                     twoAudio.play();
                 }
                 twoAudio.removeEventListener("canplay", this);

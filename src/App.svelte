@@ -13,6 +13,8 @@
 	}
 
 	reloadSquares();
+
+	import { volume } from './stores.ts';
 </script>
 
 <main>
@@ -22,7 +24,7 @@
 			{#each [0, 5, 10, 15, 20] as ri }
 				{#each squares.slice(ri, ri + 5) as square, i}
 					<div class="square square-column-{i}">
-						<Square content={square} screenshotMode={screenshotMode}/>
+						<Square content={square} screenshotMode={screenshotMode} volume={$volume}/>
 					</div>
 				{/each}
 			{/each}
@@ -32,6 +34,9 @@
 		<button on:click="{reloadSquares}">Re-roll Board</button>
 		<label>
 			<input type=checkbox bind:checked={screenshotMode}> Screenshot Mode
+		</label>
+		<label>
+			<input type="range" min="0" max="100" bind:value={$volume} id="volume-slider"> TWO Volume
 		</label>
 	</div>
 </main>
@@ -110,6 +115,11 @@
 
 	#controls > * {
 		display: inline-block;
+	}
+
+	#volume-slider {
+		position: relative;
+		top: 0.5em;
 	}
 
 	footer {
